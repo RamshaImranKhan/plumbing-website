@@ -1,0 +1,323 @@
+  <!-- Forbes announcement bar -->
+  <div class="forbes-bar" id="forbesBar">
+    <p>Named Forbes' Top Ranked Plumbing Company of 2024!</p>
+    <button type="button" class="forbes-close" id="forbesClose" aria-label="Dismiss announcement">×</button>
+  </div>
+
+  <!-- BFP-style header -->
+  <header class="bfp-header" role="banner">
+    <div class="container bfp-header-inner">
+      <a href="{{HOME}}" class="bfp-brand" aria-label="Benjamin Franklin Plumbing of Omaha">
+        <img class="bfp-logo-img" src="{{ROOT}}assets/logos/bfp-logo-white.svg" alt="Benjamin Franklin Plumbing" width="180" height="72" loading="lazy">
+      </a>
+
+      <div class="bfp-location">
+        <strong>OMAHA</strong>
+        <a href="{{LOC}}">Update Location</a>
+      </div>
+
+      <nav class="bfp-nav-pill" role="navigation" aria-label="Main navigation">
+        <div class="bfp-nav-item">
+          <button type="button" class="bfp-nav-btn{{ACTIVE_SERVICES}}" id="servicesNavBtn" aria-expanded="false" aria-controls="servicesMega">Services ▾</button>
+        </div>
+        <div class="bfp-nav-item">
+          <button type="button" class="bfp-nav-btn{{ACTIVE_RESOURCES}}" id="resourcesNavBtn" aria-expanded="false" aria-controls="resourcesMega">Resources ▾</button>
+        </div>
+        <div class="bfp-nav-item">
+          <button type="button" class="bfp-nav-btn{{ACTIVE_ABOUT}}" id="aboutNavBtn" aria-expanded="false" aria-controls="aboutMega">About Us ▾</button>
+        </div>
+        <a href="{{AREAS}}" class="bfp-nav-link">Areas We Service</a>
+        <a href="{{QUOTE}}" class="btn btn-book btn-book-nav">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+          Book Now
+        </a>
+      </nav>
+
+      <div class="bfp-header-right">
+        <div class="bfp-emergency">
+          <span>Call us 24/7 for plumbing emergencies!</span>
+          <a href="tel:4029228334">(402) 922-8334</a>
+        </div>
+        <button class="nav-toggle bfp-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Services mega menu dropdown -->
+    <div class="services-mega" id="servicesMega" hidden>
+      <div class="mega-scroll-shell">
+        <div class="mega-scroll-viewport" id="servicesMegaScroll">
+          <div class="container">
+            <ul class="services-columns mega-columns">
+          <li class="services-col">
+            <a href="{{SVC}}bathtubs.html" class="service-row mega-row">Bathtubs</a>
+            <a href="{{SVC}}faucets.html" class="service-row mega-row">Faucets</a>
+            <a href="{{SVC}}outdoor-plumbing.html" class="service-row mega-row">Outdoor Plumbing Services</a>
+
+            <div class="mega-group">
+              <div class="mega-parent-row">
+                <a href="{{SVC}}pumps.html" class="mega-parent-link">Pumps</a>
+                <button type="button" class="expand-btn mega-toggle" aria-expanded="false" aria-label="Toggle Pumps submenu">+</button>
+              </div>
+              <ul class="mega-sub collapsed">
+                <li><a href="{{SVC}}sump-pumps.html">Sump Pumps</a></li>
+                <li><a href="{{SVC}}pool-pump-plumbers.html">Pool Pump Plumbers</a></li>
+                <li><a href="{{SVC}}water-pumps.html">Water Pumps</a></li>
+              </ul>
+            </div>
+
+            <div class="mega-group">
+              <div class="mega-parent-row">
+                <a href="{{SVC}}sinks.html" class="mega-parent-link">Sinks</a>
+                <button type="button" class="expand-btn mega-toggle" aria-expanded="false" aria-label="Toggle Sinks submenu">+</button>
+              </div>
+              <ul class="mega-sub collapsed">
+                <li><a href="{{SVC}}sink-installation.html">Sink Installation</a></li>
+                <li><a href="{{SVC}}sink-repair.html">Sink Repair</a></li>
+              </ul>
+            </div>
+
+            <div class="mega-group">
+              <div class="mega-parent-row">
+                <a href="{{SVC}}water-heaters.html" class="mega-parent-link">Water Heaters</a>
+                <button type="button" class="expand-btn mega-toggle" aria-expanded="false" aria-label="Toggle Water Heaters submenu">+</button>
+              </div>
+              <ul class="mega-sub collapsed">
+                <li><a href="{{SVC}}tankless-water-heaters.html">Tankless Water Heaters</a></li>
+                <li><a href="{{SVC}}water-heater-installation.html">Water Heater Installation</a></li>
+                <li><a href="{{SVC}}water-heater-repair.html">Water Heater Repair</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="services-col">
+            <div class="mega-group">
+              <div class="mega-parent-row">
+                <a href="{{SVC}}drains.html" class="mega-parent-link">Drains</a>
+                <button type="button" class="expand-btn mega-toggle" aria-expanded="false" aria-label="Toggle Drains submenu">+</button>
+              </div>
+              <ul class="mega-sub collapsed">
+                <li><a href="{{SVC}}drain-cleaning.html">Drain Cleaning</a></li>
+                <li><a href="{{SVC}}drain-installation.html">Drain Installation</a></li>
+                <li><a href="{{SVC}}hydrojetting.html">Hydrojetting</a></li>
+              </ul>
+            </div>
+            <div class="mega-group">
+              <div class="mega-parent-row">
+                <a href="{{SVC}}garbage-disposals.html" class="mega-parent-link">Garbage Disposals</a>
+                <button type="button" class="expand-btn mega-toggle" aria-expanded="false" aria-label="Toggle Garbage Disposals submenu">+</button>
+              </div>
+              <ul class="mega-sub collapsed">
+                <li><a href="{{SVC}}garbage-disposal-installation.html">Garbage Disposal Installation</a></li>
+                <li><a href="{{SVC}}garbage-disposal-repair.html">Garbage Disposal Repair</a></li>
+              </ul>
+            </div>
+            <div class="mega-group">
+              <div class="mega-parent-row">
+                <a href="{{SVC}}piping-repiping.html" class="mega-parent-link">Piping &amp; Repiping</a>
+                <button type="button" class="expand-btn mega-toggle" aria-expanded="false" aria-label="Toggle Piping submenu">+</button>
+              </div>
+              <ul class="mega-sub collapsed">
+                <li><a href="{{SVC}}frozen-pipes.html">Frozen Pipes</a></li>
+                <li><a href="{{SVC}}leaking-pipes.html">Leaking Pipes</a></li>
+                <li><a href="{{SVC}}pipe-repair.html">Pipe Repair</a></li>
+              </ul>
+            </div>
+            <div class="mega-group">
+              <div class="mega-parent-row">
+                <a href="{{SVC}}sewers.html" class="mega-parent-link">Sewers</a>
+                <button type="button" class="expand-btn mega-toggle" aria-expanded="false" aria-label="Toggle Sewers submenu">+</button>
+              </div>
+              <ul class="mega-sub collapsed">
+                <li><a href="{{SVC}}sewer-line-repair.html">Sewer Line Repair</a></li>
+                <li><a href="{{SVC}}sewer-line-replacement.html">Sewer Line Replacement and Installation</a></li>
+                <li><a href="{{SVC}}trenchless-sewers.html">Trenchless Sewers</a></li>
+              </ul>
+            </div>
+            <div class="mega-group">
+              <div class="mega-parent-row">
+                <a href="{{SVC}}toilets.html" class="mega-parent-link">Toilets</a>
+                <button type="button" class="expand-btn mega-toggle" aria-expanded="false" aria-label="Toggle Toilets submenu">+</button>
+              </div>
+              <ul class="mega-sub collapsed">
+                <li><a href="{{SVC}}toilet-repair.html">Toilet Repair</a></li>
+                <li><a href="{{SVC}}toilet-installation.html">Toilet Installation</a></li>
+              </ul>
+            </div>
+            <div class="mega-group">
+              <div class="mega-parent-row">
+                <a href="{{SVC}}water-treatment.html" class="mega-parent-link">Water Treatment</a>
+                <button type="button" class="expand-btn mega-toggle" aria-expanded="false" aria-label="Toggle Water Treatment submenu">+</button>
+              </div>
+              <ul class="mega-sub collapsed">
+                <li><a href="{{SVC}}brita-pro-filtration.html">Brita PRO® Water Filtration System</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="services-col">
+            <a href="{{SVC}}emergency-plumbing.html" class="service-row mega-row">Emergency Plumbing Services</a>
+            <div class="mega-group">
+              <div class="mega-parent-row">
+                <a href="{{SVC}}leak-detection.html" class="mega-parent-link">Leak Detection</a>
+                <button type="button" class="expand-btn mega-toggle" aria-expanded="false" aria-label="Toggle Leak Detection submenu">+</button>
+              </div>
+              <ul class="mega-sub collapsed">
+                <li><a href="{{SVC}}leak-repair.html">Leak Repair</a></li>
+                <li><a href="{{SVC}}pool-leak-detection.html">Pool Leak Detection</a></li>
+                <li><a href="{{SVC}}slab-leaks.html">Slab Leaks</a></li>
+              </ul>
+            </div>
+            <div class="mega-group">
+              <div class="mega-parent-row">
+                <a href="{{SVC}}plumbing-repairs.html" class="mega-parent-link">Plumbing Repairs</a>
+                <button type="button" class="expand-btn mega-toggle" aria-expanded="false" aria-label="Toggle Plumbing Repairs submenu">+</button>
+              </div>
+              <ul class="mega-sub collapsed">
+                <li><a href="{{SVC}}plumbing-installation.html">Plumbing Installation</a></li>
+                <li><a href="{{SVC}}plumbing-inspection.html">Plumbing Inspection &amp; Diagnosis</a></li>
+              </ul>
+            </div>
+            <div class="mega-group">
+              <div class="mega-parent-row">
+                <a href="{{SVC}}showers.html" class="mega-parent-link">Showers</a>
+                <button type="button" class="expand-btn mega-toggle" aria-expanded="false" aria-label="Toggle Showers submenu">+</button>
+              </div>
+              <ul class="mega-sub collapsed">
+                <li><a href="{{SVC}}shower-installation.html">Shower Installation</a></li>
+                <li><a href="{{SVC}}shower-repair.html">Shower Repair</a></li>
+              </ul>
+            </div>
+            <a href="{{SVC}}water-lines.html" class="service-row mega-row">Water Lines</a>
+          </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mega-scroll-controls">
+          <button type="button" class="mega-scroll-btn" id="servicesScrollUp" aria-label="Scroll services up" disabled>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+          </button>
+          <button type="button" class="mega-scroll-btn" id="servicesScrollDown" aria-label="Scroll services down">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="mega-backdrop" id="megaBackdrop" hidden aria-hidden="true"></div>
+
+    <!-- Resources mega menu dropdown -->
+    <div class="resources-mega" id="resourcesMega" hidden>
+      <div class="container">
+        <ul class="resources-columns">
+          <li class="resources-col">
+            <a href="{{RES}}blog.html" class="resource-row">Blog</a>
+            <a href="{{RES}}newsletter.html" class="resource-row">Newsletter</a>
+          </li>
+          <li class="resources-col">
+            <a href="{{RES}}expert-tips.html" class="resource-row">Expert Tips</a>
+            <a href="{{RES}}financing.html" class="resource-row">Financing</a>
+          </li>
+          <li class="resources-col">
+            <a href="{{RES}}faq.html" class="resource-row">FAQ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- About Us mega menu dropdown -->
+    <div class="about-mega" id="aboutMega" hidden>
+      <div class="container">
+        <ul class="about-columns">
+          <li class="about-col">
+            <a href="{{RES}}about.html" class="about-row">About Us</a>
+            <a href="{{RES}}in-the-media.html" class="about-row">In The Media</a>
+          </li>
+          <li class="about-col">
+            <a href="{{RES}}code-of-ethics.html" class="about-row">Code of Ethics</a>
+            <a href="{{RES}}community-involvement.html" class="about-row">Community Involvement</a>
+          </li>
+          <li class="about-col">
+            <a href="{{RES}}our-guarantees.html" class="about-row">Our Guarantees</a>
+            <a href="{{RES}}club-membership.html" class="about-row">Club Membership</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <nav class="nav-mobile bfp-mobile-nav" id="navMobile" aria-label="Mobile navigation" hidden>
+      <details class="mobile-services-menu">
+        <summary>Services</summary>
+        <div class="mobile-services-list">
+          <a href="{{SVC}}bathtubs.html">Bathtubs</a>
+          <a href="{{SVC}}faucets.html">Faucets</a>
+          <a href="{{SVC}}outdoor-plumbing.html">Outdoor Plumbing</a>
+          <strong class="mobile-sub-head">Pumps</strong>
+          <a href="{{SVC}}sump-pumps.html" class="mobile-sub">Sump Pumps</a>
+          <a href="{{SVC}}pool-pump-plumbers.html" class="mobile-sub">Pool Pump Plumbers</a>
+          <a href="{{SVC}}water-pumps.html" class="mobile-sub">Water Pumps</a>
+          <strong class="mobile-sub-head">Sinks</strong>
+          <a href="{{SVC}}sink-installation.html" class="mobile-sub">Sink Installation</a>
+          <a href="{{SVC}}sink-repair.html" class="mobile-sub">Sink Repair</a>
+          <strong class="mobile-sub-head">Water Heaters</strong>
+          <a href="{{SVC}}tankless-water-heaters.html" class="mobile-sub">Tankless Water Heaters</a>
+          <a href="{{SVC}}water-heater-installation.html" class="mobile-sub">Water Heater Installation</a>
+          <a href="{{SVC}}water-heater-repair.html" class="mobile-sub">Water Heater Repair</a>
+          <strong class="mobile-sub-head">Drains</strong>
+          <a href="{{SVC}}drain-cleaning.html" class="mobile-sub">Drain Cleaning</a>
+          <a href="{{SVC}}drain-installation.html" class="mobile-sub">Drain Installation</a>
+          <a href="{{SVC}}hydrojetting.html" class="mobile-sub">Hydrojetting</a>
+          <strong class="mobile-sub-head">Garbage Disposals</strong>
+          <a href="{{SVC}}garbage-disposal-installation.html" class="mobile-sub">Garbage Disposal Installation</a>
+          <a href="{{SVC}}garbage-disposal-repair.html" class="mobile-sub">Garbage Disposal Repair</a>
+          <strong class="mobile-sub-head">Piping &amp; Repiping</strong>
+          <a href="{{SVC}}frozen-pipes.html" class="mobile-sub">Frozen Pipes</a>
+          <a href="{{SVC}}leaking-pipes.html" class="mobile-sub">Leaking Pipes</a>
+          <a href="{{SVC}}pipe-repair.html" class="mobile-sub">Pipe Repair</a>
+          <strong class="mobile-sub-head">Sewers</strong>
+          <a href="{{SVC}}sewer-line-repair.html" class="mobile-sub">Sewer Line Repair</a>
+          <a href="{{SVC}}sewer-line-replacement.html" class="mobile-sub">Sewer Line Replacement</a>
+          <a href="{{SVC}}trenchless-sewers.html" class="mobile-sub">Trenchless Sewers</a>
+          <strong class="mobile-sub-head">Toilets</strong>
+          <a href="{{SVC}}toilet-repair.html" class="mobile-sub">Toilet Repair</a>
+          <a href="{{SVC}}toilet-installation.html" class="mobile-sub">Toilet Installation</a>
+          <strong class="mobile-sub-head">Water Treatment</strong>
+          <a href="{{SVC}}brita-pro-filtration.html" class="mobile-sub">Brita PRO Filtration</a>
+          <a href="{{SVC}}emergency-plumbing.html">Emergency Plumbing</a>
+          <strong class="mobile-sub-head">Leak Detection</strong>
+          <a href="{{SVC}}leak-repair.html" class="mobile-sub">Leak Repair</a>
+          <a href="{{SVC}}pool-leak-detection.html" class="mobile-sub">Pool Leak Detection</a>
+          <a href="{{SVC}}slab-leaks.html" class="mobile-sub">Slab Leaks</a>
+          <strong class="mobile-sub-head">Plumbing Repairs</strong>
+          <a href="{{SVC}}plumbing-installation.html" class="mobile-sub">Plumbing Installation</a>
+          <a href="{{SVC}}plumbing-inspection.html" class="mobile-sub">Plumbing Inspection</a>
+          <strong class="mobile-sub-head">Showers</strong>
+          <a href="{{SVC}}shower-installation.html" class="mobile-sub">Shower Installation</a>
+          <a href="{{SVC}}shower-repair.html" class="mobile-sub">Shower Repair</a>
+          <a href="{{SVC}}water-lines.html">Water Lines</a>
+        </div>
+      </details>
+      <details class="mobile-services-menu">
+        <summary>Resources</summary>
+        <div class="mobile-services-list">
+          <a href="{{RES}}blog.html">Blog</a>
+          <a href="{{RES}}newsletter.html">Newsletter</a>
+          <a href="{{RES}}expert-tips.html">Expert Tips</a>
+          <a href="{{RES}}financing.html">Financing</a>
+          <a href="{{RES}}faq.html">FAQ</a>
+        </div>
+      </details>
+      <details class="mobile-services-menu">
+        <summary>About Us</summary>
+        <div class="mobile-services-list">
+          <a href="{{RES}}about.html">About Us</a>
+          <a href="{{RES}}in-the-media.html">In The Media</a>
+          <a href="{{RES}}code-of-ethics.html">Code of Ethics</a>
+          <a href="{{RES}}community-involvement.html">Community Involvement</a>
+          <a href="{{RES}}our-guarantees.html">Our Guarantees</a>
+          <a href="{{RES}}club-membership.html">Club Membership</a>
+        </div>
+      </details>
+      <a href="{{AREAS}}">Areas We Service</a>
+      <a href="{{QUOTE}}" class="btn btn-book">Book Now</a>
+      <a href="tel:4029228334">(402) 922-8334</a>
+    </nav>
+  </header>

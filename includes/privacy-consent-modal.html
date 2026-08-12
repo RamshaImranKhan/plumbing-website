@@ -1,0 +1,46 @@
+  <div class="privacy-modal" id="privacyModal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
+    <div class="privacy-modal-backdrop" data-privacy-close tabindex="-1"></div>
+    <div class="privacy-modal-panel" role="document">
+      <div class="privacy-modal-header">
+        <img class="privacy-modal-logo" src="{{ROOT}}assets/logos/brands/benjamin-franklin.png" alt="Benjamin Franklin Plumbing" width="140" height="56" loading="lazy">
+        <button type="button" class="privacy-modal-close" data-privacy-close aria-label="Close privacy preferences">×</button>
+      </div>
+      <div class="privacy-modal-body">
+        <h2 id="privacyModalTitle">Do Not Sell or Share My Personal Data</h2>
+        <p>When you visit our website, we store cookies on your browser to collect information. The information collected might relate to you, your preferences or your device, and is mostly used to make the site work as you expect it to and to provide a more personalized web experience. However, you can choose not to allow certain types of cookies, which may impact your experience of the site and the services we are able to offer. Click on the different category headings to find out more and change our default settings according to your preference. You cannot opt-out of our First Party Strictly Necessary Cookies as they are deployed in order to ensure the proper functioning of our website (such as prompting the cookie banner and remembering your settings, to log into your account, to redirect you when you log out, etc.). For more information about the First and Third Party Cookies used please follow this link.</p>
+        <p><a href="{{RES}}privacy-policy.html" class="privacy-modal-more">More information</a></p>
+
+        <h3 class="privacy-modal-subtitle">Manage Consent Preferences</h3>
+
+        <div class="privacy-pref-list">
+          <details class="privacy-pref-item" open>
+            <summary class="privacy-pref-summary">
+              <span>Strictly Necessary Cookies</span>
+              <span class="privacy-pref-badge">Always Active</span>
+            </summary>
+            <div class="privacy-pref-detail">
+              <p>These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms.</p>
+            </div>
+          </details>
+
+          <details class="privacy-pref-item">
+            <summary class="privacy-pref-summary">
+              <span>Functional Cookies</span>
+              <label class="privacy-switch" aria-label="Toggle functional cookies">
+                <input type="checkbox" id="functionalCookies" checked>
+                <span class="privacy-switch-slider"></span>
+              </label>
+            </summary>
+            <div class="privacy-pref-detail">
+              <p>These cookies enable the website to provide enhanced functionality and personalization. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies, then some or all of these services may not function properly.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+      <div class="privacy-modal-actions">
+        <button type="button" class="btn btn-privacy-reject" id="privacyReject">Reject Non-Essential</button>
+        <button type="button" class="btn btn-privacy-confirm" id="privacyConfirm">Confirm My Choices</button>
+      </div>
+      <p class="privacy-modal-powered">Powered by OneTrust</p>
+    </div>
+  </div>

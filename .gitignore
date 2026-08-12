@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+.env
+.env.*
+
+# Dev / scrape artifacts
+scraped/*_raw.html
+scraped/results.json
+_*.py
+_*.html
+
+# OS & editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Cursor
+.cursor/
