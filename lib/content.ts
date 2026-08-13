@@ -8,13 +8,13 @@ export type PageContent = {
   jsonLd: string | null;
 };
 
-const PUBLIC = path.join(process.cwd(), 'public');
+const CONTENT = path.join(process.cwd(), 'content');
 let cache: Map<string, PageContent> | null = null;
 
 function routeToCandidates(route: string): string[] {
-  if (route === '/') return [path.join(PUBLIC, 'index.html')];
+  if (route === '/') return [path.join(CONTENT, 'index.html')];
   const segments = route.split('/').filter(Boolean);
-  const joined = path.join(PUBLIC, ...segments);
+  const joined = path.join(CONTENT, ...segments);
   return [path.join(joined, 'index.html'), `${joined}.html`];
 }
 
@@ -99,7 +99,7 @@ function walkHtml(dir: string, base = ''): string[] {
 }
 
 export function getAllRoutes(): string[] {
-  return walkHtml(PUBLIC);
+  return walkHtml(CONTENT);
 }
 
 export function getPage(route: string): PageContent | null {

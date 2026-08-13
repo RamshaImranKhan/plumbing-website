@@ -13,9 +13,9 @@ function slugToRoute(slug?: string[]): string {
 }
 
 export async function generateStaticParams() {
-  return getAllRoutes()
-    .filter((route) => route !== '/')
-    .map((route) => ({ slug: route.slice(1).split('/') }));
+  return getAllRoutes().map((route) => ({
+    slug: route === '/' ? undefined : route.slice(1).split('/'),
+  }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

@@ -1,9 +1,15 @@
 import { spawnSync } from 'child_process';
 import fs from 'fs';
+import os from 'os';
+import path from 'path';
 
-process.env.npm_config_cache = 'D:\\website\\.npm-cache';
-process.env.TEMP = 'D:\\website\\.npm-tmp';
-process.env.TMP = 'D:\\website\\.npm-tmp';
+const projectRoot = process.cwd();
+const npmCache = path.join(projectRoot, '.npm-cache');
+const npmTmp = path.join(projectRoot, '.npm-tmp');
+
+process.env.npm_config_cache = fs.existsSync(npmCache) ? npmCache : path.join(os.tmpdir(), 'npm-cache');
+process.env.TEMP = fs.existsSync(npmTmp) ? npmTmp : os.tmpdir();
+process.env.TMP = process.env.TEMP;
 fs.mkdirSync(process.env.TEMP, { recursive: true });
 
 const cmd = process.argv[2] ?? 'dev';
