@@ -50,6 +50,7 @@ const emptyForm = (): FormState => ({
 export default function BookingModal() {
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(1);
+  const [direction, setDirection] = useState<'forward' | 'back'>('forward');
   const [form, setForm] = useState<FormState>(emptyForm);
   const [zipMsg, setZipMsg] = useState('');
   const [zipOk, setZipOk] = useState(false);
@@ -93,6 +94,7 @@ export default function BookingModal() {
   const openModal = useCallback(() => {
     setOpen(true);
     setStep(1);
+    setDirection('forward');
     setForm(emptyForm());
     setZipMsg('');
     setZipOk(false);
@@ -150,7 +152,13 @@ export default function BookingModal() {
   const onContinue = () => {
     if (step === 1 && !validateZipWithMessage()) return;
     if (!isStepValid(step)) return;
+    setDirection('forward');
     setStep((s) => Math.min(s + 1, 5));
+  };
+
+  const onBack = () => {
+    setDirection('back');
+    setStep((s) => Math.max(s - 1, 1));
   };
 
   const onSubmit = (e: FormEvent) => {
@@ -216,8 +224,13 @@ export default function BookingModal() {
         </ol>
 
         <form className="booking-form" id="bookingForm" onSubmit={onSubmit} noValidate>
+          <div
+            key={step}
+            className={`booking-pane is-active booking-pane--${direction}`}
+            data-pane={step}
+          >
           {step === 1 && (
-            <div className="booking-pane is-active" data-pane="1">
+            <>
               <div className="booking-illustration">
                 <img src="/assets/images/bfp-van-orange.png" alt="" width={280} height={160} loading="lazy" />
               </div>
@@ -241,11 +254,11 @@ export default function BookingModal() {
                 />
                 {zipMsg && <p className={`booking-field-msg ${zipOk ? 'is-success' : 'is-error'}`} role="status">{zipMsg}</p>}
               </div>
-            </div>
+            </>
           )}
 
           {step === 2 && (
-            <div className="booking-pane is-active" data-pane="2">
+            <>
               <h3 className="booking-pane-title">What service do you need?</h3>
               <p className="booking-pane-desc">Select the plumbing service that best matches your request.</p>
               <div className="form-group">
@@ -262,11 +275,11 @@ export default function BookingModal() {
                   ))}
                 </select>
               </div>
-            </div>
+            </>
           )}
 
           {step === 3 && (
-            <div className="booking-pane is-active" data-pane="3">
+            <>
               <h3 className="booking-pane-title">When works for you?</h3>
               <p className="booking-pane-desc">Pick your preferred appointment date and time window.</p>
               <div className="form-row">
@@ -297,11 +310,11 @@ export default function BookingModal() {
                   </select>
                 </div>
               </div>
-            </div>
+            </>
           )}
 
           {step === 4 && (
-            <div className="booking-pane is-active" data-pane="4">
+            <>
               <h3 className="booking-pane-title">How can we reach you?</h3>
               <p className="booking-pane-desc">Tell us who to contact and where the service is needed.</p>
               <div className="form-row">
@@ -322,11 +335,11 @@ export default function BookingModal() {
                 <label htmlFor="bookingAddress">Street Address <span className="req">*</span></label>
                 <input type="text" id="bookingAddress" required autoComplete="street-address" value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })} />
               </div>
-            </div>
+            </>
           )}
 
           {step === 5 && (
-            <div className="booking-pane is-active" data-pane="5">
+            <>
               <h3 className="booking-pane-title">Anything else we should know?</h3>
               <p className="booking-pane-desc">Share details about your plumbing issue or special instructions.</p>
               <div className="form-group">
@@ -337,14 +350,15 @@ export default function BookingModal() {
                 <input type="checkbox" checked={form.consent} onChange={(e) => setForm({ ...form, consent: e.target.checked })} />
                 <span>I consent to receive marketing SMS from BFP. Msg &amp; data rates may apply.</span>
               </label>
-            </div>
+            </>
           )}
+          </div>
 
           <div className="booking-modal-footer">
             <a href="tel:4029228334" className="booking-emergency">Emergency</a>
             <div className="booking-footer-actions">
               {step > 1 && (
-                <button type="button" className="btn btn-booking-back" onClick={() => setStep((s) => s - 1)}>
+                <button type="button" className="btn btn-booking-back" onClick={onBack}>
                   Back
                 </button>
               )}

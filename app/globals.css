@@ -5451,6 +5451,29 @@ summary:focus-visible {
 .booking-modal.is-visible .booking-modal-panel {
   opacity: 1;
   transform: translateY(0) scale(1);
+  animation: bookingModalIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes bookingModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes bookingHeaderIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .booking-modal-header {
@@ -5459,6 +5482,7 @@ summary:focus-visible {
   gap: 16px;
   padding: 20px 24px 16px;
   border-bottom: 1px solid var(--border);
+  animation: bookingHeaderIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
 }
 
 .booking-modal-logo {
@@ -5516,6 +5540,7 @@ summary:focus-visible {
   margin: 0;
   padding: 20px 32px 0;
   counter-reset: none;
+  animation: bookingHeaderIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.14s both;
 }
 
 .booking-step {
@@ -5537,10 +5562,23 @@ summary:focus-visible {
   height: 2px;
   background: var(--gray-200);
   z-index: 0;
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), background 0.35s ease;
+}
+
+.booking-step.is-complete:not(:last-child)::after,
+.booking-step.is-active:not(:last-child)::after {
+  transform: scaleX(1);
 }
 
 .booking-step.is-complete:not(:last-child)::after {
   background: #3b82c4;
+}
+
+.booking-step.is-active:not(:last-child):not(.is-complete)::after {
+  background: linear-gradient(90deg, #3b82c4 0%, var(--gray-200) 100%);
+  transform: scaleX(1);
 }
 
 .booking-step-icon {
@@ -5555,6 +5593,27 @@ summary:focus-visible {
   background: var(--gray-100);
   color: var(--gray-400);
   border: 2px solid var(--gray-200);
+  transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease,
+    transform 0.4s var(--ease-spring), box-shadow 0.35s ease;
+}
+
+.booking-step.is-complete .booking-step-icon::before {
+  content: "✓";
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  animation: bookingCheckPop 0.4s var(--ease-spring) both;
+}
+
+@keyframes bookingCheckPop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .booking-step-icon svg {
@@ -5569,15 +5628,32 @@ summary:focus-visible {
   color: var(--white);
 }
 
+.booking-step.is-active .booking-step-icon {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 4px rgba(59, 130, 196, 0.22);
+  animation: bookingStepPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes bookingStepPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(59, 130, 196, 0.22);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(59, 130, 196, 0.08);
+  }
+}
+
 .booking-step-label {
   font-size: 11px;
   font-weight: 600;
   color: var(--gray-400);
   line-height: 1.2;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .booking-step.is-active .booking-step-label {
   color: #3b82c4;
+  transform: translateY(-1px);
 }
 
 .booking-step.is-complete .booking-step-label {
@@ -5590,10 +5666,89 @@ summary:focus-visible {
   flex: 1;
   min-height: 0;
   overflow: auto;
+  overflow-x: hidden;
 }
 
 .booking-pane {
   padding: 28px 32px 12px;
+}
+
+.booking-pane.is-active {
+  animation: bookingPaneInForward 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.booking-pane--back.is-active {
+  animation-name: bookingPaneInBack;
+}
+
+@keyframes bookingPaneInForward {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bookingPaneInBack {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.booking-pane.is-active .booking-pane-title {
+  animation: bookingFadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
+}
+
+.booking-pane.is-active .booking-pane-desc {
+  animation: bookingFadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.booking-pane.is-active .booking-illustration {
+  animation: bookingVanIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.booking-pane.is-active .form-group,
+.booking-pane.is-active .form-row,
+.booking-pane.is-active .checkbox-label {
+  animation: bookingFadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+
+.booking-pane.is-active .form-row .form-group:nth-child(2) {
+  animation-delay: 0.24s;
+}
+
+.booking-pane.is-active .form-group:nth-of-type(n + 2) {
+  animation-delay: 0.24s;
+}
+
+@keyframes bookingFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bookingVanIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .booking-pane[hidden] {
@@ -5679,6 +5834,18 @@ summary:focus-visible {
   font-size: 0.8125rem;
   margin-top: 6px;
   min-height: 1.2em;
+  animation: bookingMsgIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes bookingMsgIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .booking-field-msg.is-error {
@@ -5702,6 +5869,18 @@ summary:focus-visible {
   padding: 16px 24px 20px;
   border-top: 1px solid var(--border);
   margin-top: auto;
+  animation: bookingFooterIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+@keyframes bookingFooterIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .booking-emergency {
@@ -5749,12 +5928,29 @@ summary:focus-visible {
   font: inherit;
   font-weight: 600;
   cursor: pointer;
-  transition: background var(--transition), opacity var(--transition);
+  transition: background 0.25s ease, transform 0.25s var(--ease-spring),
+    box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.btn-booking-continue:not(:disabled) {
+  animation: bookingBtnEnable 0.35s var(--ease-spring) both;
+}
+
+@keyframes bookingBtnEnable {
+  from {
+    transform: scale(0.96);
+    box-shadow: none;
+  }
+  to {
+    transform: scale(1);
+    box-shadow: 0 4px 14px rgba(59, 130, 196, 0.35);
+  }
 }
 
 .btn-booking-continue:hover:not(:disabled),
 .btn-booking-submit:hover:not(:disabled) {
   background: #2f6ea8;
+  transform: translateY(-1px);
 }
 
 .btn-booking-continue:disabled,
