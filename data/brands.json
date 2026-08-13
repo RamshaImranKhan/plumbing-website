@@ -1,0 +1,107 @@
+[
+  {
+    "name": "One Hour Heating & Air Conditioning",
+    "href": "https://www.onehourheatandair.com/",
+    "logo": "assets/logos/brands/one-hour.png",
+    "alt": "One Hour Heating & Air Conditioning",
+    "external": true
+  },
+  {
+    "name": "Mister Sparky Electric",
+    "href": "https://www.mistersparky.com/",
+    "logo": "assets/logos/brands/mister-sparky_2.png",
+    "alt": "Mister Sparky Electric",
+    "external": true
+  },
+  {
+    "name": "DRYmedic",
+    "href": "https://www.drymedic.com/",
+    "logo": "assets/logos/brands/drymedic-logo_2.png",
+    "alt": "DRYmedic",
+    "external": true
+  },
+  {
+    "name": "Service Team of Professionals (STOP Restoration)",
+    "href": "https://www.stoprestoration.com/",
+    "logo": "assets/logos/brands/service-team.png",
+    "alt": "Service Team of Professionals STOP Restoration",
+    "external": true
+  },
+  {
+    "name": "The Junkluggers",
+    "href": "https://www.junkluggers.com/",
+    "logo": "assets/logos/brands/jnk-005_oval_logo_final_no_tagline_rgb_1.png",
+    "alt": "The Junkluggers",
+    "external": true
+  },
+  {
+    "name": "The Cleaning Authority",
+    "href": "https://www.thecleaningauthority.com/",
+    "logo": "assets/logos/brands/tca-logo_2_1.png",
+    "alt": "The Cleaning Authority",
+    "external": true
+  },
+  {
+    "name": "Screenmobile",
+    "href": "https://www.screenmobile.com/",
+    "logo": "assets/logos/brands/screenmobile-logo-423x180-1_1.png",
+    "alt": "Screenmobile",
+    "external": true
+  },
+  {
+    "name": "Monster Tree Service",
+    "href": "https://www.monstertreeservice.com/",
+    "logo": "assets/logos/brands/monster-tree-service_2.png",
+    "alt": "Monster Tree Service",
+    "external": true
+  },
+  {
+    "name": "ASP America's Swimming Pool Company",
+    "href": "https://www.asppoolco.com/",
+    "logo": "assets/logos/brands/asp_1.png",
+    "alt": "ASP America's Swimming Pool Company",
+    "external": true
+  },
+  {
+    "name": "Mosquito Squad",
+    "href": "https://www.mosquitosquad.com/",
+    "logo": "assets/logos/brands/msq-header-logo-sm_1.webp",
+    "alt": "Mosquito Squad",
+    "external": true
+  },
+  {
+    "name": "Lawn Squad",
+    "href": "https://lawnsquad.com/",
+    "logo": "assets/logos/brands/lsq_logo_fullcolor_7.png",
+    "alt": "Lawn Squad",
+    "external": true
+  },
+  {
+    "name": "DoodyCalls Pet Waste Management",
+    "href": "https://doodycalls.com/",
+    "logo": "assets/logos/brands/doody-calls_2.png",
+    "alt": "DoodyCalls Pet Waste Management",
+    "external": true
+  },
+  {
+    "name": "Woofie's Pet Sitting, Dog Walking, and Mobile Pet Spa",
+    "href": "https://www.woofies.com/",
+    "logo": "assets/logos/brands/woofies-logo.png",
+    "alt": "Woofie's Pet Sitting, Dog Walking, and Mobile Pet Spa",
+    "external": true
+  },
+  {
+    "name": "Homewatch CareGivers",
+    "href": "https://www.homewatchcaregivers.com/",
+    "logo": "assets/logos/brands/homewatch-caregivers_2.png",
+    "alt": "Homewatch CareGivers",
+    "external": true
+  },
+  {
+    "name": "Benjamin Franklin Plumbing",
+    "href": "/",
+    "logo": "assets/logos/brands/benjamin-franklin.png",
+    "alt": "Benjamin Franklin Plumbing",
+    "external": false
+  }
+]

@@ -1,3 +1,9 @@
+# Node
+node_modules/
+.next/
+.npm-cache/
+.npm-tmp/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -5,12 +11,6 @@ __pycache__/
 .Python
 .env
 .env.*
-
-# Dev / scrape artifacts
-scraped/*_raw.html
-scraped/results.json
-_*.py
-_*.html
 
 # OS & editor
 .DS_Store
