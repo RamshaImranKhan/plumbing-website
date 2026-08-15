@@ -29,12 +29,6 @@ function initApp() {
 
 window.initApp = initApp;
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initApp);
-} else {
-  initApp();
-}
-
 function initForbesBar() {
   const bar = document.getElementById('forbesBar');
   const close = document.getElementById('forbesClose');
@@ -275,7 +269,12 @@ function initReviewCredits() {
   const credits = document.getElementById('reviewsCredits');
   const track = document.getElementById('reviewsCreditsTrack');
   let viewport = credits?.querySelector('.reviews-credits-viewport');
-  if (!credits || !track || !viewport || credits.dataset.reviewsInit === 'true') return;
+  if (!credits || !track || !viewport) return;
+
+  // Remove legacy helper text if present from an older script version
+  credits.querySelectorAll('.reviews-scroll-hint').forEach((el) => el.remove());
+
+  if (credits.dataset.reviewsInit === 'true') return;
 
   if (!viewport.parentElement?.classList.contains('reviews-credits-body')) {
     const body = document.createElement('div');
@@ -295,11 +294,6 @@ function initReviewCredits() {
 
     viewport.parentNode?.insertBefore(body, viewport);
     body.append(upBtn, viewport, downBtn);
-
-    const hint = document.createElement('p');
-    hint.className = 'reviews-scroll-hint';
-    hint.textContent = 'Reviews auto-scroll — scroll or use arrows to browse';
-    body.after(hint);
 
     viewport.setAttribute('tabindex', '0');
     viewport.setAttribute('role', 'region');
@@ -601,6 +595,9 @@ function initScrollReveal() {
       '.sidebar-card',
       '.service-main > h2',
       '.authority-brands-header',
+      '.post-list-header .section-label',
+      '.post-list-header h1',
+      '.post-list-header .post-list-lead',
       '.expert-tips-home-header .section-label',
       '.expert-tips-home-header h2',
       '.expert-tips-home-header .expert-tips-home-lead',
@@ -609,18 +606,21 @@ function initScrollReveal() {
       '.faq-intro h2',
       '.faq-intro p',
       '.faq-intro .btn-outline',
+      '.special-offers-header h2',
+      '.special-offers-header .special-offers-note',
     ].join(', ')
   );
 
   targets.forEach((el, index) => {
     el.classList.add('reveal');
 
-    const tipsGrid = el.closest('.expert-tips-home .blog-posts-grid');
-    if (tipsGrid) {
-      const cards = [...tipsGrid.querySelectorAll('.blog-card')];
+    const blogGrid = el.closest('.blog-posts-grid');
+    if (blogGrid) {
+      const cards = [...blogGrid.querySelectorAll('.blog-card')];
       const cardIndex = cards.indexOf(el);
       if (cardIndex >= 0) {
-        el.style.setProperty('--reveal-delay', `${cardIndex * 90}ms`);
+        const step = blogGrid.closest('.expert-tips-home') ? 90 : 75;
+        el.style.setProperty('--reveal-delay', `${cardIndex * step}ms`);
         return;
       }
     }
@@ -632,6 +632,20 @@ function initScrollReveal() {
         tipsHeader.querySelector('h2'),
         tipsHeader.querySelector('.expert-tips-home-lead'),
         tipsHeader.querySelector('.btn-view-all'),
+      ].filter(Boolean);
+      const headerIndex = headerEls.indexOf(el);
+      if (headerIndex >= 0) {
+        el.style.setProperty('--reveal-delay', `${headerIndex * 80}ms`);
+        return;
+      }
+    }
+
+    const postHeader = el.closest('.post-list-header');
+    if (postHeader) {
+      const headerEls = [
+        postHeader.querySelector('.section-label'),
+        postHeader.querySelector('h1'),
+        postHeader.querySelector('.post-list-lead'),
       ].filter(Boolean);
       const headerIndex = headerEls.indexOf(el);
       if (headerIndex >= 0) {
@@ -661,6 +675,39 @@ function initScrollReveal() {
       const introIndex = introEls.indexOf(el);
       if (introIndex >= 0) {
         el.style.setProperty('--reveal-delay', `${introIndex * 80}ms`);
+        return;
+      }
+    }
+
+    const offersGrid = el.closest('.special-offers-grid');
+    if (offersGrid) {
+      const coupons = [...offersGrid.querySelectorAll('.offer-coupon')];
+      const couponIndex = coupons.indexOf(el);
+      if (couponIndex >= 0) {
+        el.style.setProperty('--reveal-delay', `${couponIndex * 150}ms`);
+        return;
+      }
+    }
+
+    const offersHeader = el.closest('.special-offers-header');
+    if (offersHeader) {
+      const headerEls = [
+        offersHeader.querySelector('h2'),
+        offersHeader.querySelector('.special-offers-note'),
+      ].filter(Boolean);
+      const headerIndex = headerEls.indexOf(el);
+      if (headerIndex >= 0) {
+        el.style.setProperty('--reveal-delay', `${headerIndex * 100}ms`);
+        return;
+      }
+    }
+
+    const trustGrid = el.closest('.trust-grid');
+    if (trustGrid) {
+      const items = [...trustGrid.querySelectorAll('.trust-item')];
+      const itemIndex = items.indexOf(el);
+      if (itemIndex >= 0) {
+        el.style.setProperty('--reveal-delay', `${itemIndex * 90}ms`);
         return;
       }
     }
@@ -1006,9 +1053,8 @@ function initAreasPanel() {
     });
 }
 
-const PRIVACY_CONSENT_KEY = 'bfpPrivacyConsent';
-
 function initPrivacyConsentModal() {
+  const PRIVACY_CONSENT_KEY = 'bfpPrivacyConsent';
   const modal = document.getElementById('privacyModal');
   const functional = document.getElementById('functionalCookies');
   const rejectBtn = document.getElementById('privacyReject');
@@ -1416,4 +1462,10 @@ function stepIcon(type) {
     additional: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>',
   };
   return icons[type] || '';
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
 }

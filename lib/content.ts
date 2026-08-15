@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { injectExpertTipsIntoServiceHtml } from '@/lib/expertTips';
 
 export type PageContent = {
   title: string;
@@ -72,10 +73,11 @@ function loadPage(route: string): PageContent | null {
   for (const filePath of routeToCandidates(route)) {
     if (!fs.existsSync(filePath)) continue;
     const html = fs.readFileSync(filePath, 'utf8');
+    const mainHtml = injectExpertTipsIntoServiceHtml(extractMain(html), route);
     return {
       title: extractTitle(html),
       description: extractDescription(html),
-      content: rewriteHtml(extractMain(html), route),
+      content: rewriteHtml(mainHtml, route),
       jsonLd: extractJsonLd(html),
     };
   }
